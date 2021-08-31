@@ -5,6 +5,7 @@ import json
 import os, os.path
 from os import listdir
 from os.path import isfile, join
+from datetime import datetime
 
 def collect_imgs(path, known_face, known_names):
 
@@ -32,6 +33,7 @@ collect_imgs(path, known_face_encondings, known_face_names)
 
 
 while True:
+    
     ret, frame = video_capture.read()
 
     rgb_frame = frame[:, :, ::-1]
@@ -57,8 +59,10 @@ while True:
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-    cv2.imshow('Webcam_facerecognition', frame)
+        now = datetime.now().time()  # time object
+        print("now =", now)
 
+    cv2.imshow('Webcam_facerecognition', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
