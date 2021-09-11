@@ -30,7 +30,7 @@ known_face_encondings = []
 known_face_names = []
 collect_imgs(path, known_face_encondings, known_face_names)
 
-
+listaDeTempos = []
 
 while True:
     
@@ -59,13 +59,35 @@ while True:
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-        now = datetime.now().time()  # time object
+        hoje = datetime.today().strftime('%d-%m-%Y %H:%M:%S')
+        now = datetime.now()  # time object
+        listaDeTempos.append(now)
         print("now =", now)
 
     cv2.imshow('Webcam_facerecognition', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+#minhas variaveis
+tempoInicial = listaDeTempos[0]
+tempoFinal = listaDeTempos[-1]
+tempoDeLavagem = tempoFinal - tempoInicial
+
+obj = [
+"Nome: " + str(name),
+"Tempo de Lavagem: " + str(tempoDeLavagem),
+"Data: " + str(hoje)
+]
+
+arquivo = open("logs.txt", "a")
+arquivo.writelines(str(obj) + "\n")
+
+#
+
 video_capture.release()
 cv2.destroyAllWindows()
+print("\n\n\n\n" ,"tempo inicial:", tempoInicial, "\n", "tempo final:", tempoFinal)
+print("\n\n", "Tempo de Lavagem:", tempoDeLavagem, "\n\n")
+
+print("\n\n", "lista obj:", obj, "\n\n")
 
