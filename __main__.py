@@ -3,9 +3,24 @@ import face_recognition as fr
 import cv2
 import json
 import os, os.path
+import pyrebase
 from os import listdir
 from os.path import isfile, join
 from datetime import datetime
+
+config = {
+"apiKey": "AIzaSyDzRHZQ_OStJB_eTqP0pK-4eAB42a34XXk",
+"authDomain": "reconhecimentofacial-f73d0.firebaseapp.com",
+"databaseURL": "https://reconhecimentofacial-f73d0-default-rtdb.firebaseio.com",
+"projectId": "reconhecimentofacial-f73d0",
+"storageBucket": "reconhecimentofacial-f73d0.appspot.com",
+"messagingSenderId": "744078029755",
+"appId": "1:744078029755:web:b7901c68ce35fe87444a9e",
+"measurementId": "G-31DJEMKSH5"
+}
+
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
 
 def collect_imgs(path, known_face, known_names):
 
@@ -30,7 +45,7 @@ known_face_encondings = []
 known_face_names = []
 collect_imgs(path, known_face_encondings, known_face_names)
 
-
+listaDeTempos = []
 
 while True:
     
@@ -59,13 +74,43 @@ while True:
         font = cv2.FONT_HERSHEY_SIMPLEX
         cv2.putText(frame, name, (left + 6, bottom - 6), font, 1.0, (255, 255, 255), 1)
 
-        now = datetime.now().time()  # time object
+        hoje = datetime.today().strftime('%d-%m-%Y %H:%M:%S')
+        now = datetime.now()  # time object
+        listaDeTempos.append(now)
         print("now =", now)
 
     cv2.imshow('Webcam_facerecognition', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
+#minhas variaveis
+tempoInicial = listaDeTempos[0]
+tempoFinal = listaDeTempos[-1]
+tempoDeLavagem = tempoFinal - tempoInicial
+
+obj = [
+"Nome: " + str(name),
+"Tempo de Lavagem: " + str(tempoDeLavagem),
+"Data: " + str(hoje)
+]
+
+objJson = {
+"Nome: ": str(name),
+"Tempo de Lavagem: ": str(tempoDeLavagem),
+"Data: ": str(hoje)
+}
+
+arquivo = open("logs.txt", "a")
+arquivo.writelines(str(obj) + "\n")
+
+db.child("dados").push(objJson)
+
+#
+
 video_capture.release()
 cv2.destroyAllWindows()
+print("\n\n\n\n" ,"tempo inicial:", tempoInicial, "\n", "tempo final:", tempoFinal)
+print("\n\n", "Tempo de Lavagem:", tempoDeLavagem, "\n\n")
+
+print("\n\n", "lista obj:", obj, "\n\n")
 

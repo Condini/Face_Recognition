@@ -1,0 +1,10 @@
+
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:05.235321', 'Data: 14-09-2021 20:29:39']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:13.564892', 'Data: 14-09-2021 20:32:44']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:01.946012', 'Data: 14-09-2021 20:33:54']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:03.160429', 'Data: 14-09-2021 20:36:01']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:04.433464', 'Data: 14-09-2021 20:39:51']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:03.504080', 'Data: 14-09-2021 20:42:08']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:13.630628', 'Data: 14-09-2021 20:43:35']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:05.127072', 'Data: 14-09-2021 20:45:40']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:09.192758', 'Data: 14-09-2021 20:46:24']
