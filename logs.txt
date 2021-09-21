@@ -8,3 +8,6 @@
 ['Nome: Guilherme', 'Tempo de Lavagem: 0:00:13.630628', 'Data: 14-09-2021 20:43:35']
 ['Nome: Guilherme', 'Tempo de Lavagem: 0:00:05.127072', 'Data: 14-09-2021 20:45:40']
 ['Nome: Guilherme', 'Tempo de Lavagem: 0:00:09.192758', 'Data: 14-09-2021 20:46:24']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:03.944195', 'Data: 21-09-2021 19:27:49']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:08.108007', 'Data: 21-09-2021 19:31:18']
+['Nome: Guilherme', 'Tempo de Lavagem: 0:00:07.200882', 'Data: 21-09-2021 20:04:59']
