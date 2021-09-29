@@ -1,0 +1,30 @@
+Esquema de pinagem dos sensores:
+
+RFID:
+    - 3.3v
+    - GND
+    - RST: 9
+    - SDA: 10
+    - MOSI: 11
+    - MISO: 12
+    - SCK: 13
+
+Infras (INPUT):
+    - 5v
+    - GND
+    - INF_1: 8
+    - INF_2: 7
+    - INF_3: 6
+
+Switch (INPUT):
+    - GND
+    - button: 5
+
+LED (OUTPUT):
+    - GND
+    - RED: 4
+    - GREEN: 3
+
+LCD e I2C
+    - A4
+    - A5
