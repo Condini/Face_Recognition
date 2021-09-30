@@ -6,7 +6,10 @@
 #define INF_1 8
 #define INF_2 7
 #define INF_3 6
-#define led_lav 5
+#define botao 5
+#define led_r 4
+#define led_g 3
+
 String uid;
 String uid_DB;
 String name_DB;
