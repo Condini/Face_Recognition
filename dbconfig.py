@@ -17,10 +17,13 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 
-# auth = firebase.auth()
+auth = firebase.auth()
 
 # # Log the user in
-# user = auth.sign_in_with_email_and_password(os.environ.get("EMAIL"), os.environ.get("PASSWORD"))
+user = auth.sign_in_with_email_and_password(os.environ.get("EMAIL"), os.environ.get("PASSWORD"))
 # print(user)
 # Get a reference to the database service
 db = firebase.database()
+
+#UID = db.child("mocados").child("Rock").child("UID").get().val()
+#print(UID)
