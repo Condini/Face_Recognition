@@ -1,13 +1,18 @@
+import dbconfig
 import serial
 import time
 
 
-def rfid_compare(uid_a, uid_db, rfid):
-    if(uid_a == uid_db):
-        rfid = uid_db
-        return print("Cartao valido")
+def rfid_compare(rfid):
+    print("RFID detectado: "+rfid)
+    UID_search = db1.child("mocados").order_by_child('UID').equal_to(rfid).get()
+    if UID_search == "":
+        return print("Cartao Invalido ou Usuário nao existente!\n")
     else:
-        return print("Cartao Invalido")
+        for args in UID_search.each():
+            list = args.val()
+        name_UID = list["Nome"]
+        return print("Cartao Válido! Funcionário: "+ name_UID + "\n")
 
 def dup_rfid(uid, rfid):
     if(uid == rfid):
@@ -17,8 +22,9 @@ def dup_rfid(uid, rfid):
 
 conexao = ""
 profile = "Rodrigo.json"
-UID = "45678"
 UID_t = ""
+db1 = dbconfig.db
+
 
 for porta in range(10):
         try:
@@ -35,7 +41,7 @@ if conexao!="":
         rfid = (conexao.readline()).decode('utf-8')
         dup_rfid()
         print("Tag detectada: " + rfid)
-        rfid_compare(rfid, UID)
+        rfid_compare(rfid)
         print("Infravermelhos detectados: \n")
         print(infra_1)
         print(infra_2)

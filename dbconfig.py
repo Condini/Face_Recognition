@@ -24,6 +24,3 @@ user = auth.sign_in_with_email_and_password(os.environ.get("EMAIL"), os.environ.
 # print(user)
 # Get a reference to the database service
 db = firebase.database()
-
-#UID = db.child("mocados").child("Rock").child("UID").get().val()
-#print(UID)
