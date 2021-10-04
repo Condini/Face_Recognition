@@ -3,7 +3,7 @@ import serial
 import time
 
 
-def rfid_compare(rfid):
+def rfid_compare(rfid, UID):
     print("RFID detectado: "+rfid)
     UID_search = db1.child("mocados").order_by_child('UID').equal_to(rfid).get()
     if UID_search == "":
@@ -12,6 +12,7 @@ def rfid_compare(rfid):
         for args in UID_search.each():
             list = args.val()
         name_UID = list["Nome"]
+        UID = list["UID"]
         return print("Cartao Válido! Funcionário: "+ name_UID + "\n")
 
 def dup_rfid(uid, rfid):
@@ -22,7 +23,7 @@ def dup_rfid(uid, rfid):
 
 conexao = ""
 profile = "Rodrigo.json"
-UID_t = ""
+UID = ""
 db1 = dbconfig.db
 
 
@@ -41,7 +42,7 @@ if conexao!="":
         rfid = (conexao.readline()).decode('utf-8')
         dup_rfid()
         print("Tag detectada: " + rfid)
-        rfid_compare(rfid)
+        rfid_compare(rfid, UID)
         print("Infravermelhos detectados: \n")
         print(infra_1)
         print(infra_2)
