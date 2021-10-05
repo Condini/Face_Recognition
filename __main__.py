@@ -6,7 +6,6 @@ import os, os.path
 from os import listdir
 from os.path import isfile, join
 from datetime import datetime
-import dbconfig
 from face_rec import main
 
 main()
