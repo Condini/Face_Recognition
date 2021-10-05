@@ -26,5 +26,5 @@ LED (OUTPUT):
     - GREEN: 3
 
 LCD e I2C
-    - A4
-    - A5
+    - SDA: A4
+    - SCK: A5

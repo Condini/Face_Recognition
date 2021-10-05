@@ -40,7 +40,6 @@ if conexao!="":
         infra_1 = (conexao.read()).decode()
         infra_2 = (conexao.read()).decode()
         rfid = (conexao.readline()).decode('utf-8')
-        dup_rfid()
         print("Tag detectada: " + rfid)
         rfid_compare(rfid, UID)
         print("Infravermelhos detectados: \n")
