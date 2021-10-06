@@ -9,31 +9,26 @@ from datetime import datetime
 import dbconfig
 
 db = dbconfig.db
+qtdPerfis = len(db.child("mocados").get().val())
+tudo = db.child("mocados").get().val()
+todosNomes = list(tudo)
 
-def collect_imgs(path, known_face, known_names):
+def collect_imgs(known_face, known_names):
 
-    profiles = [f for f in listdir(path) if isfile(join(path, f))]
-    profiles_ln = len([name for name in os.listdir(path) if os.path.isfile(os.path.join(path, name))])
-    profiles_list = []
+    profiles_ln = qtdPerfis
     images = []
 
-    for i in range(profiles_ln):
-        with open('Profiles/' + profiles[i]) as f:
-            profiles_list.append(json.load(f))
-
     for x in range(profiles_ln):
-        images.append(fr.load_image_file("Images/"+profiles_list[x]['img']))
+        images.append(fr.load_image_file("Images/"+todosNomes[x]+".jpg"))
         known_face.append(fr.face_encodings(images[x])[0])
-        known_names.append(profiles_list[x]["nome"])
+        known_names.append(todosNomes[x])
 
 def main():
 
     video_capture = cv2.VideoCapture(0)
-
-    path = "Profiles"
     known_face_encondings = []
     known_face_names = []
-    collect_imgs(path, known_face_encondings, known_face_names)
+    collect_imgs(known_face_encondings, known_face_names)
 
     listaDeTempos = []
 
